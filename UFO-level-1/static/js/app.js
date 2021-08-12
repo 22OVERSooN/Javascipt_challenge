@@ -24,3 +24,15 @@ buildTable(tableData)
 
 // find the filter first
 var filterWord = d3.select('.form-control')
+// Select the button
+var button = d3.select("#filter-btn")
+
+// Create event handlers for clicking the button pressing the enter key
+button.button("click", runEnter)
+filterWold.button("submit", runEnter)
+
+function runEnter() {
+    
+}
+
+
