@@ -19,3 +19,8 @@ function buildTable(data){
 }
 
 buildTable(tableData)
+
+// build a function to use filter
+
+// find the filter first
+var filterWord = d3.select('.form-control')
