@@ -6,26 +6,23 @@ var tableData = data;
 // select the table area with tbody
 var tbody = d3.select("tbody");
 
+function init(){
 // build a function to show the table data on index page
-function buildTable(data){
-    data.forEach((dataRow) => {
+
+    tableData.forEach((dataRow) => {
         const row = tbody.append("tr");
 
         Object.values(dataRow).forEach((val) => {
             row.append("td").text(val);
-        }
-        );
-    });
+            });
+        });
 }
-
-buildTable(tableData)
-
-// build a function to use filter
 
 // find the filter first
 var filterWord = d3.select('.form-control')
 // Select the button
 var button = d3.select("#filter-btn")
+
 
 // Create event handlers for clicking the button pressing the enter key
 button.on("click", runEnter)
@@ -43,7 +40,23 @@ function runEnter() {
     var inputValue = inputElement.node().value;
     console.log(inputValue)
 
-    
+    var filteredData = tableData.map(data => data.datetime === inputValue);
+
+    console.log(filteredData)
+
+
+
+    function buildTable(data){
+        tbody.remove()
+        data.forEach((dataRow) => {
+            const row = tbody.append("tr");
+
+            Object.values(dataRow).forEach((val) => {
+                row.append("td").text(val);
+            });
+        });
+    }
+    buildTable(filteredData)
 }
 
-
+init();
