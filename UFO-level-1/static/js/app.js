@@ -28,10 +28,21 @@ var filterWord = d3.select('.form-control')
 var button = d3.select("#filter-btn")
 
 // Create event handlers for clicking the button pressing the enter key
-button.button("click", runEnter)
-filterWold.button("submit", runEnter)
+button.on("click", runEnter)
+filterWord.on("submit", runEnter)
 
+// complete the event handler function fro the form
 function runEnter() {
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    //Select the input element and get the raw HTML node
+    var inputElement = d3.select(".form-control");
+
+    //get the value property of the input element
+    var inputValue = inputElement.node().value;
+    console.log(inputValue)
+
     
 }
 
