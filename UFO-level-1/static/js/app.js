@@ -22,7 +22,7 @@ function init(){
 var filterWord = d3.select('.form-control')
 // Select the button
 var button = d3.select("#filter-btn")
-
+init();
 
 // Create event handlers for clicking the button pressing the enter key
 button.on("click", runEnter)
@@ -37,18 +37,17 @@ function runEnter() {
     var inputElement = d3.select(".form-control");
 
     //get the value property of the input element
-    var inputValue = inputElement.node().value;
+    var inputValue = inputElement.property("value").trim();
     console.log(inputValue)
 
-    var filteredData = tableData.map(data => data.datetime === inputValue);
+    var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
 
     console.log(filteredData)
 
 
-
     function buildTable(data){
-        tbody.remove()
-        data.forEach((dataRow) => {
+         d3.selectAll("tbody>tr").remove()
+         data.forEach((dataRow) => {
             const row = tbody.append("tr");
 
             Object.values(dataRow).forEach((val) => {
@@ -59,4 +58,5 @@ function runEnter() {
     buildTable(filteredData)
 }
 
-init();
+
+
